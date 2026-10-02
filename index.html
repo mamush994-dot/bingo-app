@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #1a1d24;
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-around;
+            background: #252932;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        .number-box {
+            background: #2c313e;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🎲 Bingo Game Live</h2>
+
+    <div class="header">
+        <div>ተጫዋቾች: <span id="players">1</span></div>
+        <div>ደራሽ: <span id="prize">100 ETB</span></div>
+    </div>
+
+    <div class="grid" id="bingoGrid"></div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        const grid = document.getElementById('bingoGrid');
+        for (let i = 1; i <= 75; i++) {
+            let div = document.createElement('div');
+            div.className = 'number-box';
+            div.innerText = i;
+            grid.appendChild(div);
+        }
+    </script>
+</body>
+</html>
